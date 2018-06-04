@@ -1,0 +1,20 @@
+<div class="container text-center">
+  <div class="row">
+    <div class="col-sm-offset-4 col-sm-4">
+      <%= simple_form_for(@event) do |f| %>
+        <%= f.input :name, label: 'Event name', placeholder: 'cheese&wine dinner' %>
+        <%= f.input :location, label: 'Location', placeholder: '2 Rotchild st Tel aviv' %>
+        <%= f.input :date, label: 'Date', placeholder: '12/06/2018' %>
+        <%= f.input :time, label: 'Event time', placeholder: '20:00' %>
+        <%= f.input :min_p, label: 'Min number of people', placeholder: '10' %>
+        <%= f.input :max_p, label: 'Max number of people', placeholder: '20' %>
+        <%= f.input :description, label: 'Please describe your event', placeholder: 'We will be enjoying great wine and cheese selections with some other pastrise and a graet desert' %>
+        <%= f.input :photo %>
+        <%= f.input :photo_cache, as: :hidden %>
+        <%= f.submit 'Publish my event'%>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+

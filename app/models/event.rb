@@ -7,5 +7,5 @@ class Event < ApplicationRecord
   validates :time, presence: true
   validates :description, presence: true
   validates :max_p, presence: true
-  # mount_uploader :photo, PhotoUploader
+  mount_uploader :photo, PhotoUploader
 end
