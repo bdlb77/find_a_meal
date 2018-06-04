@@ -5,20 +5,19 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
-require "faker"
+require 'faker'
 
 # TODO: Write a seed to insert 100 posts in the database
-100.times do
-  post = Post.new(
+20.times do
+  event = Event.new(
     location: Faker::Address.community,
-    date: Faker::Internet,
+    date: Faker::Date.forward(23),
     time: Faker::Time.forward(23, :morning),
     min_p: Faker::Number.between(1, 3),
     max_p: Faker::Number.between(6, 14),
-    description: GameOfThrones.quote,
-    name: GameOfThrones.character 
+    description: Faker::GameOfThrones.quote,
+    name: Faker::GameOfThrones.character 
   )
-  post.save!
+  event.save!
 end
 puts "finished!"
