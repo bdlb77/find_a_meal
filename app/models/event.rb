@@ -1,14 +1,10 @@
 class Event < ApplicationRecord
   has_many :bookings, dependent: :destroy;
   validates :name, presence: true, uniqueness: true
-
-   t.string "location"
-    t.date "date"
-    t.time "time"
-    t.integer "min_p"
-    t.integer "max_p"
-    t.text "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-
+  validates :location, presence: true
+  validates :date, presence: true
+  validates :time, presence: true
+  validates :description, presence: true
+  validates :max_p, presence: true
+  # mount_uploader :photo, PhotoUploader
 end
