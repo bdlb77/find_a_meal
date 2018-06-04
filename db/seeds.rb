@@ -16,7 +16,8 @@ require 'faker'
     min_p: Faker::Number.between(1, 3),
     max_p: Faker::Number.between(6, 14),
     description: Faker::GameOfThrones.quote,
-    name: Faker::GameOfThrones.character 
+    name: Faker::GameOfThrones.character,
+    photo: Faker::Placeholdit.image #=> "http://placehold.it/300x300.png/000"
   )
   event.save!
 end
