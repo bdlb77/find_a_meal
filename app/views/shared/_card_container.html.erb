@@ -1,0 +1,17 @@
+
+
+
+<% @events.each do |event| %>
+  <%= link_to event_path(event) do %>
+    <div class="col-xs-12 col-sm-4">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= event.photo %>);">
+        <div class="card-category"><%= event.date %></div>
+        <div class="card-description">
+          <h2><%= event.name %></h2>
+          <p><%= event.location %></p>
+        </div>
+        <img class="card-user" src="https://kitt.lewagon.com/placeholder/users/tgenaitay">
+      </div>
+    </div>
+  <% end %>
+<% end %>

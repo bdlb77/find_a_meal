@@ -8,6 +8,9 @@
 require 'faker'
 
 # TODO: Write a seed to insert 100 posts in the database
+Event.destroy_all
+puts "events destroyed!"
+puts "seeding.."
 20.times do
   event = Event.new(
     location: Faker::Address.community,
@@ -16,7 +19,8 @@ require 'faker'
     min_p: Faker::Number.between(1, 3),
     max_p: Faker::Number.between(6, 14),
     description: Faker::GameOfThrones.quote,
-    name: Faker::GameOfThrones.character 
+    name: Faker::GameOfThrones.character,
+    photo: Faker::Placeholdit.image #=> "http://placehold.it/300x300.png/000"
   )
   event.save!
 end
