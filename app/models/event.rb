@@ -1,4 +1,5 @@
 class Event < ApplicationRecord
+
   has_many :bookings, dependent: :destroy;
   validates :name, presence: true, uniqueness: true
   validates :location, presence: true
