@@ -4,7 +4,7 @@
 <% @events.each do |event| %>
   <%= link_to event_path(event) do %>
     <div class="col-xs-12 col-sm-4">
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://images.unsplash.com/photo-1501146763593-4a4242b2040e?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEyMDd9&s=e3f2e4a0dabdf63cd544be468a54696f');">
+      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%= event.photo %>);">
         <div class="card-category"><%= event.date %></div>
         <div class="card-description">
           <h2><%= event.name %></h2>

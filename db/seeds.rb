@@ -8,6 +8,9 @@
 require 'faker'
 
 # TODO: Write a seed to insert 100 posts in the database
+Event.destroy_all
+puts "events destroyed!"
+puts "seeding.."
 20.times do
   event = Event.new(
     location: Faker::Address.community,

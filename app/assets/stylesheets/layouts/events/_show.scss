@@ -1,0 +1,51 @@
+.wrapper{
+  display: flex;
+  justify-content: space-between;
+  height: 100vh;
+  margin: 2% auto;
+  flex-wrap: wrap;
+
+}
+.left-container-show{
+  flex-grow: 2;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.right-container-show{
+  display: flex;
+  position: relative;
+  border: 1px solid black;
+  flex-grow: 1;
+  justify-content: space-around;
+  align-items: flex-end;
+  margin: 1%;
+  box-shadow: rgba(0,0,0,0.2) 10px 10px 10px;
+}
+
+
+.pic-card{
+  box-shadow: rgba(0,0,0,0.2) 10px 10px 10px;
+  border: 1px solid black;
+  flex-grow: 1;
+  margin: 2%;
+  
+}
+#map{
+box-shadow: rgba(0,0,0,0.2) 10px 10px 10px;
+border: 1px solid black;
+flex-grow: 1;
+  margin: 2%;
+}
+
+#cancel-btn{
+  position: absolute;
+  right: 0;
+}
+.cancel-seat{
+ 
+  background-color: #315972;
+  box-shadow: 0px 4px 0px 0px #375f78;
+}
+
