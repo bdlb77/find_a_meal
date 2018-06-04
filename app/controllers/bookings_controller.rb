@@ -13,6 +13,7 @@ class BookingsController < ApplicationController
       redirect_to booking_path(@booking)
     else
       render :new
+    end
 	end
 
 	def edit
@@ -43,7 +44,6 @@ class BookingsController < ApplicationController
 	end
 	
 	def set_booking
-   @booking = Bookking.find(params[:id])
- end
-
+   	@booking = Bookking.find(params[:id])
+ 	end
 end
