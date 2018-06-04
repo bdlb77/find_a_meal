@@ -1,8 +1,12 @@
 <div class="navbar-wagon">
   <!-- Logo -->
+
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
     <%= image_tag "logof.jpg", height: 65 %>
   <% end %>
+
+
+
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs hidden-sm">
@@ -10,9 +14,11 @@
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
-      <%= link_to "Host", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Trips", "#", class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "Messages", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <div>
+   <%= link_to " Host a meal", new_event_path, class: "btn btn-warning btn-home fas fa-door-open" %>
+
+   <%= link_to " Find a meal", events_path, class: "btn btn-danger btn-home fas fas fa-utensils" %>
+      </div>
 
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
@@ -39,6 +45,11 @@
       </div>
     <% else %>
       <!-- Login link (when logged out) -->
+        <div>
+   <%= link_to " Host a meal", new_user_session_path, class: "btn btn-warning btn-home fas fa-door-open" %>
+
+   <%= link_to " Find a meal", new_user_session_path, class: "btn btn-danger btn-home fas fas fa-utensils" %>
+      </div>
       <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
     <% end %>
   </div>
