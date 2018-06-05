@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController
   before_action :set_event, only: [:new, :create, :show]
+
   def index
 		@bookings = Booking.all
 	end
@@ -33,11 +34,13 @@ class BookingsController < ApplicationController
   end
 
 	def show
+
   end
 
-	def delete
+	def destroy
+    @booking = Booking.find(params[:id])
 	  @booking.destroy
-    redirect_to event_bookings_path
+    redirect_to event_bookings_path(@event)
   end
 
 	private
@@ -45,7 +48,7 @@ class BookingsController < ApplicationController
   def booking_params
 		params.require(:booking).permit(:number_of_people)
 	end
-	
+
   def set_event
     @event = Event.find(params[:event_id])
   end
