@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-sm-offset-4 col-sm-4">
       <%= simple_form_for [@event, @booking] do |f| %>
-        <%= f.input :number_of_people, label: 'Number of dinners', placeholder: 'cheese&wine dinner' %>
+        <%= f.input :number_of_people, label: 'Number of people', placeholder: 'cheese&wine dinner' %>
         <%= f.submit 'Reserve place'%>
       <% end %>
     </div>
