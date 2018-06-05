@@ -8,6 +8,6 @@ class Event < ApplicationRecord
   validates :description, presence: true
   validates :max_p, presence: true
   mount_uploader :photo, PhotoUploader
-  geocoded_by :location
-  after_validation :geocode, if: :will_save_change_to_address?
+  # geocoded_by :location
+  # after_validation :geocode, if: :will_save_change_to_address?
 end
