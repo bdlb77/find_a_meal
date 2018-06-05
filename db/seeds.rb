@@ -9,6 +9,7 @@ require 'faker'
 
 # TODO: Write a seed to insert 100 posts in the database
 Event.destroy_all
+Booking.destroy_all
 puts "events destroyed!"
 puts "seeding.."
 20.times do
@@ -20,7 +21,7 @@ puts "seeding.."
     max_p: Faker::Number.between(6, 14),
     description: Faker::GameOfThrones.quote,
     name: Faker::GameOfThrones.character,
-    photo: Faker::Placeholdit.image #=> "http://placehold.it/300x300.png/000"
+    photo: "https://source.unsplash.com/collection/1322972/" #=> "http://placehold.it/300x300.png/000"
   )
   event.save!
 end
