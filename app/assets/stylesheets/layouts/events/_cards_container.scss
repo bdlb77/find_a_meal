@@ -1,16 +1,16 @@
 .wrapper-events{
-  background: #747474;
+  background: #33658A;
   display: flex;
 }
-#map-event {
-  flex: 1 0 450px;
-  height: 100vh;
-  position: sticky !important;
-  top: 0 !important;
-  border: 1px solid black;
-}
+// #map {
+//   flex: 1 0 450px;
+//   height: 100hv;
+//   position: sticky !important;
+//   top: 0 !important;
+//   border: 1px solid black;
+// }
 .left-wrapper{
-  display: flex;
-  flex-direction: column;
+  flex-grow: 1;
+  padding: 25px;
 }
 
