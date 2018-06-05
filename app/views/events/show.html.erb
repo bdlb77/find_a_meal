@@ -1,59 +1,49 @@
 <div class="wrapper">
-	<div class="left-container-show">
-   <div class="pic-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%=image_path @event.photo, crop: :fill %>);">
-
-		</div>
-		<div id="map">
-			<p>hello world</p>
-		</div>
-		<div id="map"></div>
-	</div>
 	<div class="right-container-show">
     <div>
     <ul>
       <li>
-      <h3>Location of the event:</h3>
+        <h3>Name:<%= @event.name %></h3>
+      </li>
+      <li>
     <div class="location">
-      <h4><%= @event.address %></h4>
+      <h3>Location of the event:<%= @event.address %></h3>
     </div>
       </li>
       <li>
-      <h3>The date of the event:</h3>
+
     <div class="date">
-      <h4><%= @event.date %></h4>
+      <h3>The date of the event:<%= @event.date %></h3>
     </div>
       </li>
       <li>
-       <h3>The time of the event:</h3>
     <div class="time">
-       <h4><%= @event.time %></h4>
-    </div>
+       <h3>The time of the event:<%= @event.time %></h3>
+       </div>
       </li>
       <li>
     <div class="seats">
-      <h3>The minimum number of seats</h3>
-      <h4>
-      <%= @event.min_p %>
-      </h4>
-      <h3>The maximum number of seats</h3>
-      <h4>
-      <%= @event.max_p %>
-      </h4>
+      <h3>The minimum number of seats<%= @event.min_p %></h3>
+
+      <h3>The maximum number of seats<%= @event.max_p %></h3>
       </li>
       <li>
-        <h3>Description:</h3>
+        <h3>Description:<%= @event.description %></h3>
       <div class="description">
         <h4><%= @event.description %></h4>
       </div>
     </div>
       </li>
     </ul>
-    <div id="buttons cancel-btn">
-      <a class="btn cancel-seat">Cancel Seat</a>
-    </div>
-    </div>
 		<div id="buttons cancel-btn">
 			<%= link_to "Book Your Spot!", new_event_booking_path(@event), class: "btn cancel-seat" %>
 		</div>
+    </div>
+  <div class="left-container-show">
+   <div class="pic-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%=image_path @event.photo, crop: :fill %>);">
+
+    </div>
+    <div id="map"></div>
+  </div>
 	</div>
 </div>
