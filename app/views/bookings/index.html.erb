@@ -5,7 +5,7 @@
     <li>
       <h3>Event name: <%= booking.event.name  %></h3>
         <p>Your reservation : <%= booking.number_of_people  %>Attending</p>
-      <p><%= link_to 'Your Reservation', event_booking_path(@event, booking)%></p>
+      <p><%= link_to 'Your Reservation', event_booking_path(current_user, booking)%></p>
     </li>
   <% end %>
 </ul>
