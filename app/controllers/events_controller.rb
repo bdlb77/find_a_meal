@@ -3,7 +3,14 @@ class EventsController < ApplicationController
  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @events = Event.all
+    # @events = Event.all
+    @events = Event.where.not(latitude: nil, longitude: nil)
+     @markers = @events.map do |event|
+      {
+        lat: event.latitude,
+        lng: event.longitude#,
+      }
+    end
   end
 
   def show
