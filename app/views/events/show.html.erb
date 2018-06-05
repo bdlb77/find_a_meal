@@ -1,15 +1,12 @@
 <div class="wrapper">
 	<div class="left-container-show">
 		<div class="pic-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%=image_path @event.photo, crop: :fill %>);">	
-		pe
 		</div>
-		<div id="map">
-			<p>hello world</p>
-		</div>
+		<div id="map"></div>
 	</div>
 	<div class="right-container-show">
 		<div id="buttons cancel-btn">
-			<%= link_to "Book Your Spot!", event_path(@event), class: "btn cancel-seat" %>
+			<%= link_to "Book Your Spot!", new_user_booking_path(@user), class: "btn cancel-seat" %>
 		</div>
 	</div>
 </div>
