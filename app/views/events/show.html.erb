@@ -1,6 +1,7 @@
 <div class="wrapper">
 	<div class="left-container-show">
-		<div class="pic-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%=image_path @event.photo, crop: :fill %>);">	
+   <div class="pic-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%=image_path @event.photo, crop: :fill %>);">
+
 		</div>
 		<div id="map">
 			<p>hello world</p>
@@ -13,7 +14,7 @@
       <li>
       <h3>Location of the event:</h3>
     <div class="location">
-      <h4><%= @event.location %></h4>
+      <h4><%= @event.address %></h4>
     </div>
       </li>
       <li>
