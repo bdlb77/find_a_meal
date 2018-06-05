@@ -1,1 +1,13 @@
+<h1>Your Bookings</h1>
+
+<ul>
+	<% @bookings.each do |booking| %>
+    <li>
+      <h3>Event name: <%= booking.event.name  %></h3>
+        <p>Your reservation : <%= booking.number_of_people  %>Attending</p>
+      <p><%= link_to 'Your Reservation', event_booking_path(@event, booking)%></p>
+    </li>
+  <% end %>
+</ul>
+
 

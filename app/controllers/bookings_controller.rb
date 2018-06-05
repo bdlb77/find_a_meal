@@ -1,6 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_event, only: [:new, :create, :show]
-
+  before_action :set_event, only: [:new, :create, :show, :index]
   def index
 		@bookings = Booking.all
 	end
