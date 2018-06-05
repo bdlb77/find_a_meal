@@ -14,7 +14,7 @@ puts "events destroyed!"
 puts "seeding.."
 20.times do
   event = Event.new(
-    location: Faker::Address.community,
+    address: Faker::Address.full_address,
     date: Faker::Date.forward(23),
     time: Faker::Time.forward(23, :morning),
     min_p: Faker::Number.between(1, 3),
