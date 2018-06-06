@@ -6,12 +6,12 @@
     <div class="col-xs-12 col-sm-6 col-md-4">
       <div class="card">
       <div class="card-photo" style="
-  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-         url('<%= event.photo %>, crop: :fill %>')">
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%=image_path event.photo, crop: :fill %>);">
     </div>
         <div class="card-description">
           <h2><%= event.name %></h2>
           <p><%= event.description %></p>
+          <h3><%= event.price %></h3>
         </div>
         <div class="card-date"><%= event.date %></div>
       </div>
