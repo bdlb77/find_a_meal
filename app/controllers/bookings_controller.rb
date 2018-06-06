@@ -37,6 +37,8 @@ class BookingsController < ApplicationController
   end
 
 	def destroy
+    raise
+
     @booking = Booking.find(params[:id])
 	  @booking.destroy
     redirect_to event_bookings_path(@event)
