@@ -4,6 +4,7 @@ class EventsController < ApplicationController
   def home
         @events1 = Event.all
         @events = @events1.first(3)
+  end
 
  def index
     if params[:date].present?
