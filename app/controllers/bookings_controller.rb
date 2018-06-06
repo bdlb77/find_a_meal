@@ -66,9 +66,8 @@ class BookingsController < ApplicationController
 
   def check_availability
     seats_counter = 0
-    @bookings = Booking.all
-    
     @booking.event = @event
+    @bookings = Booking.all
     max_p = @booking.event.max_p
     
     @bookings.each do |booking|
@@ -79,5 +78,15 @@ class BookingsController < ApplicationController
   end
 
 
+  # def already_booked
+  #   @bookings = Booking.all
+  #   @booking.event = @event
 
+
+  #   @bookings.each do |booking|
+  #     if booking.event.present?
+  #       flash[:notice] = "Are you sure you want to book?"
+  #     end
+  #   end
+  #   e
 end
