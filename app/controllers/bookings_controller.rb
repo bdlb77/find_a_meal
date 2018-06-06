@@ -1,31 +1,38 @@
 class BookingsController < ApplicationController
-  before_action :set_event, only: [:new, :create, :show, :index]
+  before_action :set_event, only: [:new, :create, :show]
+  # before_action :set_user, only: [:index]
   def index
-		@bookings = Booking.all
-	end
+    @bookings = Booking.all
+  end
 
-	def new
-		@booking = Booking.new
-	end
+  def new
+    @booking = Booking.new
+  end
 
-	def create
+  def create
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.event = @event
-		if @booking.save
-      redirect_to event_booking_path(@event, @booking)
+    if check_availability == true
+      if @booking.save
+        redirect_to event_booking_path(@event, @booking)
+      else
+        render :new
+      end
     else
-      render :new
+      flash[:alert] = "Sorry not enough spots left, 
+        Taking you back to all the events"
+      redirect_to events_path(current_user)
     end
-	end
-
-	def edit
   end
 
-	def update
-	  @booking
+  def edit
+  end
+
+  def update
+    @booking    
     if @booking.save
-      @booking.update(booking_params)
+      @booking.update(booking_params)	
       redirect_to event_bookings_path
     else
       render :edit
@@ -39,7 +46,9 @@ class BookingsController < ApplicationController
 	def destroy
     @booking = Booking.find(params[:id])
 	  @booking.destroy
-    redirect_to event_bookings_path(@event)
+    flash[:alert] = "Your Reservation to #{@booking.event.name } 
+      for #{@booking.number_of_people} people has been cancelled!"
+    redirect_to user_bookings_path(current_user)
   end
 
 	private
@@ -52,6 +61,21 @@ class BookingsController < ApplicationController
     @event = Event.find(params[:event_id])
   end
 
+  def set_user
+    @user = current_user
+  end
 
+  def check_availability
+    seats_counter = 0
+    @booking.event = @event
+    max_p = @booking.event.max_p
+    
+    @event.bookings.each do |booking|
+      seats_counter += booking.number_of_people
+    end
+    seats_counter += @booking.number_of_people
+    max_p > seats_counter
+   
+  end
 
 end

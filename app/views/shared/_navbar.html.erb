@@ -1,9 +1,14 @@
 <div class="navbar-wagon">
   <!-- Logo -->
-
+   <div class="left-navbar">
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
     <%= image_tag "logof.jpg", height: 65 %>
   <% end %>
+
+   <%= link_to " Host a meal", new_event_path, class: " btn-warning btn-home host" %>
+
+   <%= link_to " Find a meal", events_path, class: " btn-danger btn-home" %>
+   </div>
 
 
 
@@ -14,11 +19,7 @@
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
-      <div>
-   <%= link_to " Host a meal", new_event_path, class: "btn btn-warning btn-home fas fa-door-open" %>
 
-   <%= link_to " Find a meal", events_path, class: "btn btn-danger btn-home fas fas fa-utensils" %>
-      </div>
 
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
@@ -26,7 +27,7 @@
           <%= image_tag "http://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
-              <%= link_to event_bookings_path(current_user)  do %>
+              <%= link_to user_bookings_path(current_user)  do %>
                 <i class="fa fa-user"></i> <%= t(".profile", default: "Reservations") %>
               <% end %>
             </li>
@@ -46,15 +47,15 @@
     <% else %>
       <!-- Login link (when logged out) -->
         <div>
-   <%= link_to " Host a meal", new_user_session_path, class: "btn btn-warning btn-home fas fa-door-open" %>
+   <%= link_to " Sign up",  new_user_registration_path, class: "btn-medium btn-home" %>
 
-   <%= link_to " Find a meal", new_user_session_path, class: "btn btn-danger btn-home fas fas fa-utensils" %>
+   <%= link_to " Sign in", new_user_session_path, class: "btn-medium btn-home" %>
       </div>
-      <%= link_to t(".sign_in", default: "Login"), new_user_session_path, class: "navbar-wagon-item navbar-wagon-link" %>
-    <% end %>
+      <% end %>
   </div>
 
   <!-- Dropdown list appearing on mobile only -->
+
   <div class="navbar-wagon-item hidden-md hidden-lg">
     <div class="dropdown">
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>

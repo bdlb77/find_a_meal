@@ -1,0 +1,50 @@
+
+.page-container{
+	display: flex;
+	min-height: 800px;
+	justify-content: space-around;
+	background:  #33658A;
+
+}
+
+ .left-container {
+	padding-top: 10px;
+	margin: 80px 20px 80px 60px;
+	background: gray;
+	flex: 1 3 40%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	box-shadow: rgba(0,0,0,0.2) 10px 10px 10px;
+
+
+}
+.cancel-btn{
+	align-self: center;
+	box-shadow: rgba(0,0,0,0.2) 10px 10px 10px;
+
+}
+ .right-container {
+ 	margin: 60px 60px 60px 20px;
+	flex: 3 1 60%;
+	flex-direction: column;
+	flex-wrap: wrap;
+
+}
+
+.right-container > .bookings-picture{
+	margin-bottom: 15px;
+	height: 50%;
+	box-shadow: rgba(0,0,0,0.4) 10px 10px 10px;
+
+}
+
+.right-container > #map {
+	margin-top: 15px;
+	height: 50%;
+}
+
+#booking-name{
+	font-weight: 700;
+}
