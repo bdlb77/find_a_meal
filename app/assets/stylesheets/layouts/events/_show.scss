@@ -1,47 +1,36 @@
-.wrapper{
-  display: flex;
-  justify-content: space-between;
-  height: 100vh;
-  margin: 2% auto;
-  flex-wrap: wrap;
-
-}
-.left-container-show{
-  flex-grow: 2;
-  display: flex;
-  flex-direction: column;
-
-}
-
-.right-container-show{
-  display: flex;
-  position: relative;
-  border: 1px solid black;
-  flex-grow: 1;
-  justify-content: space-around;
-  align-items: flex-end;
-  margin: 1%;
-  box-shadow: rgba(0,0,0,0.2) 10px 10px 10px;
-}
+// .show-container{
+//   display: flex;
+//   justify-content: space-around;
+//  background: #65B891;
+// }
 
 
-.pic-card{
-  box-shadow: rgba(0,0,0,0.2) 10px 10px 10px;
-  border: 1px solid black;
-  flex-grow: 1;
-  margin: 2%;
+// .info{
+//   display: flex;
+//   border: 1px solid black;
+//   flex-grow: 1;
+//   margin: 0px 40px 700px 9px;
+//   box-shadow: rgba(0,0,0,0.2) 10px 10px 10px;
+//   background: gray;
+// }
 
-}
+
+// .show-container > #map  {
+//    margin: 0px 40px 393px 9px;
+//   box-shadow: rgba(0,0,0,0.4) 10px 10px 10px;
+
+// }
+
 #map{
 box-shadow: rgba(0,0,0,0.2) 10px 10px 10px;
 border: 1px solid black;
-flex-grow: 1;
   margin: 2%;
 }
 
-#cancel-btn{
+#book-btn{
   position: absolute;
   right: 0;
+  margin: 1px 37px 238px -58px;
 }
 .cancel-seat{
 
@@ -49,10 +38,82 @@ flex-grow: 1;
   box-shadow: 0px 4px 0px 0px #375f78;
 }
 
-.description {
-   border: 1px solid black;
-   border-radius: 4px;
-   width: 300px;
-    padding: 25px;
-    margin: 25px;
+
+ .grid {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 40% 60%;
+  height: calc(100vh - 70px);
+  padding: 30px;
+  height: 100vh;
+
+
 }
+
+.info {
+  grid-row: 1/ span 2;
+  grid-column: 1/ span 1;
+  margin: 1px 71px 180px 71px !important;
+  box-shadow: rgba(0,0,0,0.2) 3px 3px 3px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  display: flex;
+}
+
+.show-map {
+ grid-row: 2/ span 1 !important;
+ grid-column: 2/ span 1 !important;
+ height: 38vh !important;
+ margin: 0 0 0 0;
+ border-radius: 5px;
+}
+
+.pic-card {
+  grid-row: 1 /span 1;
+  grid-column: 2/ span 1;
+  margin: 0 0 10px 0;
+  border-radius: 5px;
+  min-height: 300px;
+}
+
+.text {
+  margin: 53px -12px 12px 65px;
+}
+.name-show {
+  margin: 100px 0 0 0 !important;
+}
+
+.location {
+  margin: 6px 0 0 0 !important;
+}
+
+.date {
+ margin: 60px 0 0 0 !important;
+}
+
+.time {
+ margin: 40px 0 0 0 !important;
+
+}
+
+.description {
+ margin: 20px 0 0 0 !important;
+ color: #bbb;
+
+}
+
+@media(max-width: 720px) {
+  .grid {
+  display: inline;
+  }
+}
+
+
+.avatarshow {
+  border-radius: 50%;
+  height: 200px;
+  width: 200px;
+  background: gray;
+   margin: 28px -235px -131px 213px;
+}
+

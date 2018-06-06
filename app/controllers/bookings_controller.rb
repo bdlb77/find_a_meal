@@ -1,16 +1,19 @@
 class BookingsController < ApplicationController
-  before_action :set_event, only: [:new, :create, :show]
-  # before_action :set_user, only: [:index]
+  before_action :set_event, only: [:new, :create, :show, :update]
+   before_action :set_user
   def index
     @bookings = Booking.all
+    @bookings = policy_scope(Booking).order(created_at: :desc)
   end
 
   def new
     @booking = Booking.new
+    authorize @booking
   end
 
   def create
     @booking = Booking.new(booking_params)
+    authorize @booking
     @booking.user = current_user
     @booking.event = @event
     if check_availability == true
@@ -40,10 +43,13 @@ class BookingsController < ApplicationController
   end
 
 	def show
+    @booking = Booking.find(params[:id])
+    authorize @booking
   end
 
-	def destroy
+  def destroy
     @booking = Booking.find(params[:id])
+    authorize @booking
 	  @booking.destroy
     flash[:alert] = "Your Reservation to #{@booking.event.name }
       for #{@booking.number_of_people} people has been cancelled!"

@@ -4,10 +4,10 @@
     <% @bookings.each do |booking| %>
       <%= link_to event_booking_path(booking.event, booking), class: 'active' do %>
         <div class="col-xs-12 col-sm-6 col-md-4">
+          <div class="card">
           <div class="card-photo" 
             style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= booking.event.photo %>, crop: :fill %>')">
           </div>
-          <div class="card">
             <div class="card-description">
               <h2><%= booking.event.name %></h2>
               <p>Seats Reserved: <%= booking.number_of_people%> </p>

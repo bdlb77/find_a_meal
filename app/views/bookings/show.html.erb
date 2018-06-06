@@ -13,10 +13,10 @@
       <%= @event.description %>
     </div>
     <div id="buttons cancel-btn">
-      <%= link_to "Cancel Reservation", booking_path, 
+      <%= link_to "Cancel Reservation", booking_path,
         class: "btn cancel-seat", method: :delete %>
     </div>
- 
+
   </div>
   <div class="right-container">
     <div class="bookings-picture" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%=image_path @event.photo, crop: :fill %>);">
@@ -24,7 +24,7 @@
     <div id="map"></div>
   </div>
 </div>
-  
+
 
 
 
