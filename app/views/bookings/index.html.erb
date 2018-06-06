@@ -1,14 +1,22 @@
-<h1>Your Bookings</h1>
-
-<ul>
-	<% @bookings.each do |booking| %>
-    <li>
-      <h3>Event name: <%= booking.event.name  %></h3>
-        <p>Your reservation : <%= booking.number_of_people  %>Attending</p>
-        <p><%= booking.event.max_p %></p>
-      <p><%= link_to 'Your Reservation', event_booking_path(booking.event, booking)%></p>
-    </li>
-  <% end %>
-</ul>
-
+<div class="wrapper">
+  <div class="container">
+    <h1 class="text-center">Hello! Here Are Your Reservations. </h1>
+    <% @bookings.each do |booking| %>
+      <%= link_to event_booking_path(booking.event, booking), class: 'active' do %>
+        <div class="col-xs-12 col-sm-6 col-md-4">
+          <div class="card-photo" 
+            style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= booking.event.photo %>, crop: :fill %>')">
+          </div>
+          <div class="card">
+            <div class="card-description">
+              <h2><%= booking.event.name %></h2>
+              <p>Seats Reserved: <%= booking.number_of_people%> </p>
+            </div>
+            <div class="card-date"><%= booking.event.date %></div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
 
