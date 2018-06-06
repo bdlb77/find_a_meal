@@ -13,7 +13,6 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.event = @event
-    check_availability
     if check_availability == true
       if @booking.save
         redirect_to event_booking_path(@event, @booking)
@@ -21,9 +20,9 @@ class BookingsController < ApplicationController
         render :new
       end
     else
-      flash[:alert] = "All booked up! sorry! \n 
-        Taking you back to your bookings. "
-      redirect_to user_bookings_path(current_user)
+      flash[:alert] = "Sorry not enough spots left, 
+        Taking you back to all the events"
+      redirect_to events_path(current_user)
     end
   end
 
@@ -67,14 +66,14 @@ class BookingsController < ApplicationController
   def check_availability
     seats_counter = 0
     @booking.event = @event
-    @bookings = Booking.all
     max_p = @booking.event.max_p
     
-    @bookings.each do |booking|
+    @event.bookings.each do |booking|
       seats_counter += booking.number_of_people
     end
-
-    availability = max_p > seats_counter ? true : false   
+    seats_counter += @booking.number_of_people
+    max_p > seats_counter
+   
   end
 
 
