@@ -14,6 +14,7 @@ gem 'geocoder'
 gem 'pg_search'
 gem 'searchkick', '~> 3.0'
 gem 'bootstrap-datepicker-rails'
+gem 'pundit'
 
 
 gem 'autoprefixer-rails'

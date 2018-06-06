@@ -1,12 +1,19 @@
 class EventsController < ApplicationController
- before_action :find_event, only: [:show, :edit, :destroy]
- skip_before_action :authenticate_user!, only: [:index, :show]
+  before_action :find_event, only: [:show, :edit, :destroy]
+  skip_before_action :authenticate_user!, only: [:index, :show, :home]
   def home
-        @events1 = Event.all
-        @events = @events1.first(3)
+    @events1 = Event.all
+    @events1 = policy_scope(Event).order(created_at: :desc)
+    @events = @events1.first(3)
+    raise
   end
 
   def index
+
+    if params[:date].present?
+      @events = Event.where(date: params[:date])
+      @events = policy_scope(Event).order(created_at: :desc)
+=======
     # bookings = Booking.all
     # Event.all.each do |event|
     #   event.available = true
@@ -34,6 +41,7 @@ class EventsController < ApplicationController
     else
       # @events = Event.where(available: :true)
       @events = Event.all
+      @events = policy_scope(Event).order(created_at: :desc)
       events_marker = @events.where.not(latitude: nil, longitude: nil)
       @markers = events_marker.map do |event|
         {
@@ -44,50 +52,53 @@ class EventsController < ApplicationController
     end
   end
 
-def show
-  @user = User.find(current_user.id)
-end
-
-
-def new
-  @event = Event.new
-end
-
-def edit
-end
-
-def create
-  @event = Event.new(event_params)
-  if @event.save
-    redirect_to event_path(@event)
-  else
-    render :new
+  def show
+    # @user = User.find(current_user.id)
+    authorize @event
   end
-end
 
-def update
-  @event = Event.find(params[:id])
-  @event.update(event_params)
-  if @event.save
-    redirect_to event_path(@event)
-  else
-    render :edit
+
+  def new
+    @event = Event.new
+    authorize @event
   end
-end
 
-def destroy
-  @event.destroy
-  redirect_to events_path
-end
+  def edit
+  end
 
-private
+  def create
+    @event = Event.new(event_params)
+    authorize @event
+    if @event.save
+      redirect_to event_path(@event)
+    else
+      render :new
+    end
+  end
 
-def find_event
-  @event = Event.find(params[:id])
-end
+  def update
+    @event = Event.find(params[:id])
+    @event.update(event_params)
+    if @event.save
+      redirect_to event_path(@event)
+    else
+      render :edit
+    end
+  end
 
-def event_params
-  params.require(:event).permit(:name, :address, :date, :time, :min_p, :max_p, :description, :photo)
-end
+  def destroy
+    @event.destroy
+    redirect_to events_path
+  end
+
+  private
+
+  def find_event
+    @event = Event.find(params[:id])
+  end
+
+  def event_params
+    params.require(:event).permit(:name, :address, :date, :time, :min_p, :max_p, :description, :photo)
+  end
 
 end
