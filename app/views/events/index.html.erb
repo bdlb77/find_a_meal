@@ -5,21 +5,60 @@
         <a class="btn blue">submit</a>
       </div>
     </div> -->
-    <div class="card-container">
-      <div class="row">
-        <%= form_tag events_path, method: :get do %>
-        <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "Find a meal"%>
-        <%end%>
+    <!-- Special version of Bootstrap that only affects content wrapped in .bootstrap-iso -->
+    <%#=  simple_form_for :event, url: events_path, method: 'GET', :html => { :class => 'form-inline' } do |f|  %>
+    <%#= f.input :date, as: :date, input_html: { class: 'datepicker label-margin' },placeholder: 'Event date', label: false %>
+    <%#= f.submit "Find a meal event", class: "btn btn-warning" %>
+    <%# end %>
+
+    <div class="date-form">
+      <%= "Choose a date:"%>
+      <form method="get" action="/events">
+        <input id="authenticity_token" name="authenticity_token" type="hidden" value="#{form_authenticity_token}" />
+        <div class="form-group ">
+          <label class="control-label " for="date">
+            Date
+          </label>
+          <div class="input-group">
+            <div class="input-group-addon">
+              <i class="fa fa-calendar-plus-o"></i>
+            </div>
+            <input class="form-control" id="date" name="date" placeholder="YYYY-MM-DD" type="text"/>
+          </div>
+        </div>
+        <div class="form-group">
+        <button class="btn btn-primary " name="submit" type="submit">
+          Submit
+        </button>
+        </div>
+      </form>
+    </div>
+    <!-- Extra JavaScript/CSS added manually in "Settings" tab -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <!-- Include Date Range Picker -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+    <script>
+    $(document).ready(function(){
+        var date_input=$('input[name="date"]'); //our date input has the name "date"
+        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+        date_input.datepicker({
+            format: 'yyyymmdd',
+            container: container,
+            todayHighlight: true,
+            autoclose: true,
+        })
+    })
+  </script>
+
         <%= render "shared/card_container" %>
       </div>
-    </div>
-  </div>
   <div
   id="map"
   data-markers="<%= @markers.to_json %>"
-></div>
+  ></div>
 </div>
 

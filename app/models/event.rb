@@ -12,8 +12,8 @@ class Event < ApplicationRecord
   after_validation :geocode, if: :will_save_change_to_address?
 
   include PgSearch
-    pg_search_scope :search_by_date_and_price_and_name,
-    against: [ :date, :price, :name ],
+    pg_search_scope :search_by_date_and_price,
+    against: [ :date, :price ],
     using: {
       tsearch: { prefix: true }
     }
