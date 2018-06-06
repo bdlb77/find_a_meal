@@ -8,41 +8,49 @@ class EventsController < ApplicationController
 
   def index
     # bookings = Booking.all
-    # Event.all.each do |event|
+    # @events = Event.all
+    # @events.each do |event|
     #   event.available = true
+    # end
+    # counter = 0
+    # @available_events = []
+    # @events.each do |e|
     #   counter = 0
     #   bookings.each do |b|
-    #     if event.id == b.event_id
+    #     if e.id == b.event_id
     #       counter += b.number_of_people
     #     end
     #   end
-    #   if counter >= event.max_p
-    #     raise
-    #     event.available = false
+    #   if counter >= e.max_p
+    #     e.available = false
+    #     @available_events << e
     #   end
     # end
-    if params[:date].present?
-      # @events = Event.where(date: params[:date], available: :true)
-       @events = Event.where(date: params[:date])
-      events_marker = @events.where.not(latitude: nil, longitude: nil)
-      @markers = events_marker.map do |event|
+    #   @events = @available_events
+    #   raise
+
+      if params[:date].present?
+        @events = Event.where(date: params[:date])
+        events_marker = @events.where.not(latitude: nil, longitude: nil)
+        @markers = events_marker.map do |event|
+          {
+            lat: event.latitude,
+            lng: event.longitude,
+          }
+        end
+      else
+        # @events = @events
+        @events = Event.all
+        events_marker = Event.where.not(latitude: nil, longitude: nil)
+        @markers = events_marker.map do |event|
         {
           lat: event.latitude,
           lng: event.longitude,
         }
-      end
-    else
-      # @events = Event.where(available: :true)
-      @events = Event.all
-      events_marker = @events.where.not(latitude: nil, longitude: nil)
-      @markers = events_marker.map do |event|
-        {
-          lat: event.latitude,
-          lng: event.longitude,
-        }
+        end
       end
     end
-  end
+
 
 def show
   @user = User.find(current_user.id)
