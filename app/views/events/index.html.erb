@@ -7,6 +7,12 @@
     </div> -->
     <div class="card-container">
       <div class="row">
+        <%= form_tag movies_path, method: :get do %>
+        <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Find a mmeal"%>
+        <%end%>
         <%= render "shared/card_container" %>
       </div>
     </div>
