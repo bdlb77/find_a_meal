@@ -33,6 +33,7 @@ class BookingsController < ApplicationController
   def update
     @booking    
     if @booking.save
+      @booking.update(booking_params)	
       redirect_to event_bookings_path
     else
       render :edit
