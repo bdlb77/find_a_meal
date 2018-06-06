@@ -5,6 +5,7 @@
     <li>
       <h3>Event name: <%= booking.event.name  %></h3>
         <p>Your reservation : <%= booking.number_of_people  %>Attending</p>
+        <p><%= booking.event.max_p %></p>
       <p><%= link_to 'Your Reservation', event_booking_path(booking.event, booking)%></p>
     </li>
   <% end %>
