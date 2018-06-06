@@ -34,12 +34,10 @@ class BookingsController < ApplicationController
   end
 
 	def show
-   
+
   end
 
 	def destroy
-    raise
-
     @booking = Booking.find(params[:id])
 	  @booking.destroy
     redirect_to user_bookings_path(current_user)
@@ -54,7 +52,7 @@ class BookingsController < ApplicationController
   def set_event
     @event = Event.find(params[:event_id])
   end
-  
+
   def set_user
     @user = current_user
   end
