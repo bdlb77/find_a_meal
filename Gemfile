@@ -13,6 +13,8 @@ gem 'faker'
 gem 'geocoder'
 gem 'pg_search'
 gem 'searchkick', '~> 3.0'
+gem 'bootstrap-datepicker-rails'
+
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass', '~> 3.3'

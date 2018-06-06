@@ -10,17 +10,17 @@ class EventsController < ApplicationController
         lat: event.latitude,
         lng: event.longitude,
       }
-    if params[:query].present?
-      sql_query = " \
-        events.name @@ :query \
-        OR events.date @@ :query \
-        OR events.description @@ :query \
-        OR events.price @@ :query \
-      "
-      @events = Event.where(sql_query, query: "%#{params[:query]}%")
-    else
-    @events = Event.all
-    end
+  #   if params[:query].present?
+  #     sql_query = " \
+  #       events.name @@ :query \
+  #       OR events.date @@ :query \
+  #       OR events.description @@ :query \
+  #       OR events.price @@ :query \
+  #     "
+  #     @events = Event.where(sql_query, query: "%#{params[:query]}%")
+  #   else
+  #   @events = Event.all
+  #   end
     end
   end
 
