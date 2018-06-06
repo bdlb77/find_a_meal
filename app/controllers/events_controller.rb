@@ -9,9 +9,28 @@ class EventsController < ApplicationController
   end
 
   def index
+
     if params[:date].present?
       @events = Event.where(date: params[:date])
       @events = policy_scope(Event).order(created_at: :desc)
+=======
+    # bookings = Booking.all
+    # Event.all.each do |event|
+    #   event.available = true
+    #   counter = 0
+    #   bookings.each do |b|
+    #     if event.id == b.event_id
+    #       counter += b.number_of_people
+    #     end
+    #   end
+    #   if counter >= event.max_p
+    #     raise
+    #     event.available = false
+    #   end
+    # end
+    if params[:date].present?
+      # @events = Event.where(date: params[:date], available: :true)
+       @events = Event.where(date: params[:date])
       events_marker = @events.where.not(latitude: nil, longitude: nil)
       @markers = events_marker.map do |event|
         {
@@ -19,13 +38,8 @@ class EventsController < ApplicationController
           lng: event.longitude,
         }
       end
-      #sql_query = " \
-      #  events.date @@ :query \
-      #  OR events.price @@ :query \
-      #{}"
-      # @events = Event.where(sql_query, query: "%#{params[:query]}%")
     else
-      
+      # @events = Event.where(available: :true)
       @events = Event.all
       @events = policy_scope(Event).order(created_at: :desc)
       events_marker = @events.where.not(latitude: nil, longitude: nil)

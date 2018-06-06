@@ -23,7 +23,7 @@ class BookingsController < ApplicationController
         render :new
       end
     else
-      flash[:alert] = "Sorry not enough spots left, 
+      flash[:alert] = "Sorry not enough spots left,
         Taking you back to all the events"
       redirect_to events_path(current_user)
     end
@@ -33,9 +33,9 @@ class BookingsController < ApplicationController
   end
 
   def update
-    @booking    
+    @booking
     if @booking.save
-      @booking.update(booking_params)	
+      @booking.update(booking_params)
       redirect_to event_bookings_path
     else
       render :edit
@@ -51,7 +51,7 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     authorize @booking
 	  @booking.destroy
-    flash[:alert] = "Your Reservation to #{@booking.event.name } 
+    flash[:alert] = "Your Reservation to #{@booking.event.name }
       for #{@booking.number_of_people} people has been cancelled!"
     redirect_to user_bookings_path(current_user)
   end
@@ -74,13 +74,13 @@ class BookingsController < ApplicationController
     seats_counter = 0
     @booking.event = @event
     max_p = @booking.event.max_p
-    
+
     @event.bookings.each do |booking|
       seats_counter += booking.number_of_people
     end
     seats_counter += @booking.number_of_people
     max_p > seats_counter
-   
+
   end
 
 end
