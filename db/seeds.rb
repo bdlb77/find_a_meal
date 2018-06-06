@@ -21,7 +21,8 @@ puts "seeding.."
     max_p: Faker::Number.between(6, 14),
     description: Faker::GameOfThrones.quote,
     name: Faker::GameOfThrones.character,
-    photo: "https://source.unsplash.com/collection/1322972/" #=> "http://placehold.it/300x300.png/000"
+    photo: "https://source.unsplash.com/collection/1322972/", #=> "http://placehold.it/300x300.png/000"
+    price: Faker::Number.decimal(2)
   )
   event.save!
 end

@@ -1,19 +1,21 @@
 class BookingsController < ApplicationController
-  before_action :set_event, only: [:new, :create, :show]
-  # before_action :set_user, only: [:index]
+  before_action :set_event, only: [:new, :create, :show, :update]
+   before_action :set_user
   def index
     @bookings = Booking.all
+    @bookings = policy_scope(Booking).order(created_at: :desc)
   end
 
   def new
     @booking = Booking.new
+    authorize @booking
   end
 
   def create
     @booking = Booking.new(booking_params)
+    authorize @booking
     @booking.user = current_user
     @booking.event = @event
-    check_availability
     if check_availability == true
       if @booking.save
         redirect_to event_booking_path(@event, @booking)
@@ -21,9 +23,9 @@ class BookingsController < ApplicationController
         render :new
       end
     else
-      flash[:alert] = "All booked up! sorry! \n 
-        Taking you back to your bookings. "
-      redirect_to user_bookings_path(current_user)
+      flash[:alert] = "Sorry not enough spots left,
+        Taking you back to all the events"
+      redirect_to events_path(current_user)
     end
   end
 
@@ -31,9 +33,9 @@ class BookingsController < ApplicationController
   end
 
   def update
-    @booking    
+    @booking
     if @booking.save
-      @booking.update(booking_params)	
+      @booking.update(booking_params)
       redirect_to event_bookings_path
     else
       render :edit
@@ -41,12 +43,16 @@ class BookingsController < ApplicationController
   end
 
 	def show
-
+    @booking = Booking.find(params[:id])
+    authorize @booking
   end
 
-	def destroy
+  def destroy
     @booking = Booking.find(params[:id])
+    authorize @booking
 	  @booking.destroy
+    flash[:alert] = "Your Reservation to #{@booking.event.name }
+      for #{@booking.number_of_people} people has been cancelled!"
     redirect_to user_bookings_path(current_user)
   end
 
@@ -66,18 +72,15 @@ class BookingsController < ApplicationController
 
   def check_availability
     seats_counter = 0
-    @bookings = Booking.all
-    
     @booking.event = @event
     max_p = @booking.event.max_p
-    
-    @bookings.each do |booking|
+
+    @event.bookings.each do |booking|
       seats_counter += booking.number_of_people
     end
+    seats_counter += @booking.number_of_people
+    max_p > seats_counter
 
-    availability = max_p > seats_counter ? true : false   
   end
-
-
 
 end
