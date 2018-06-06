@@ -1,49 +1,32 @@
-<div class="wrapper">
-	<div class="right-container-show">
-    <div>
-    <ul>
-      <li>
-        <p>Name:<%= @event.name %></p>
-      </li>
-      <li>
-    <div class="location">
-      <p>Location of the event:<%= @event.address %></p>
-    </div>
-      </li>
-      <li>
+  <div class="wrapper">
+    <div class="show-container">
+    <div class="grid">
+      <div class="info text-center">
 
-    <div class="date">
-      <p>The date of the event:<%= @event.date %></p>
-    </div>
-      </li>
-      <li>
-    <div class="time">
-       <p>The time of the event:<%= @event.time %></p>
+        <div class="text">
+          <div class="name-show">
+            <h1><%= @event.name %></h1>
+          </div>
+          <div class="description">
+            <h4> <%= @event.description %></h4>
+          </div>
+          <div id="buttons book-btn">
+            <%= link_to "Book Your Spot!", new_event_booking_path(@event), class: "btn cancel-seat" %>
+          </div>
+          <div class="location">
+            <p><strong>Location of the event:</strong> <%= @event.address %></p>
+          </div>
+          <div class="date">
+            <p><strong>Date: </strong> <%= @event.date %></p>
+          </div>
+          <div class="time">
+           <p><%= @event.time %></p>
+         </div>
        </div>
-      </li>
-      <li>
-    <div class="seats">
-      <p>The minimum number of seats<%= @event.min_p %></p>
+     </div>
+     <div id="map" class="show-map"></div>
+     <div class="pic-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%=image_path @event.photo, crop: :fill %>);">
+     </div>
+   </div>
+ </div>
 
-      <p>The maximum number of seats<%= @event.max_p %></p>
-      </li>
-      <li>
-        <p>Description:<%= @event.description %></p>
-      <div class="description">
-        <p><%= @event.description %></p>
-      </div>
-    </div>
-      </li>
-    </ul>
-		<div id="buttons cancel-btn">
-			<%= link_to "Book Your Spot!", new_event_booking_path(@event), class: "btn cancel-seat" %>
-		</div>
-    </div>
-  <div class="left-container-show">
-   <div class="pic-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%=image_path @event.photo, crop: :fill %>);">
-
-    </div>
-    <div id="map"></div>
-  </div>
-	</div>
-</div>

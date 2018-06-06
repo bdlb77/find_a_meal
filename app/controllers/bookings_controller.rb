@@ -1,16 +1,19 @@
 class BookingsController < ApplicationController
-  before_action :set_event, only: [:new, :create, :show]
-  # before_action :set_user, only: [:index]
+  before_action :set_event, only: [:new, :create, :show, :update]
+   before_action :set_user
   def index
     @bookings = Booking.all
+    @bookings = policy_scope(Booking).order(created_at: :desc)
   end
 
   def new
     @booking = Booking.new
+    authorize @booking
   end
 
   def create
     @booking = Booking.new(booking_params)
+    authorize @booking
     @booking.user = current_user
     @booking.event = @event
     if check_availability == true
@@ -20,7 +23,7 @@ class BookingsController < ApplicationController
         render :new
       end
     else
-      flash[:alert] = "Sorry not enough spots left, 
+      flash[:alert] = "Sorry not enough spots left,
         Taking you back to all the events"
       redirect_to events_path(current_user)
     end
@@ -30,9 +33,9 @@ class BookingsController < ApplicationController
   end
 
   def update
-    @booking    
+    @booking
     if @booking.save
-      @booking.update(booking_params)	
+      @booking.update(booking_params)
       redirect_to event_bookings_path
     else
       render :edit
@@ -40,12 +43,16 @@ class BookingsController < ApplicationController
   end
 
 	def show
-
+    @booking = Booking.find(params[:id])
+    authorize @booking
   end
 
-	def destroy
+  def destroy
     @booking = Booking.find(params[:id])
+    authorize @booking
 	  @booking.destroy
+    flash[:alert] = "Your Reservation to #{@booking.event.name }
+      for #{@booking.number_of_people} people has been cancelled!"
     redirect_to user_bookings_path(current_user)
   end
 
@@ -67,25 +74,13 @@ class BookingsController < ApplicationController
     seats_counter = 0
     @booking.event = @event
     max_p = @booking.event.max_p
-    
+
     @event.bookings.each do |booking|
       seats_counter += booking.number_of_people
     end
     seats_counter += @booking.number_of_people
     max_p > seats_counter
-   
+
   end
 
-
-  # def already_booked
-  #   @bookings = Booking.all
-  #   @booking.event = @event
-
-
-  #   @bookings.each do |booking|
-  #     if booking.event.present?
-  #       flash[:notice] = "Are you sure you want to book?"
-  #     end
-  #   end
-  #   e
 end
