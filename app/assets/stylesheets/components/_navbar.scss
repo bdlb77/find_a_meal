@@ -21,8 +21,8 @@
 
 /* User Avatar */
 .navbar-wagon .avatar {
-  height: 35px;
-  width: 35px;
+  height: 50px;
+  width: 50px;
   border-radius: 50%;
 }
 
@@ -81,5 +81,26 @@
 }
 
 .btn-home {
-  padding: 5px;
+  padding: 10px 15px;
+  margin: 5px 13px;
+  border-radius: 50px;
+  font-weight: lighter;
+}
+
+.btn-medium {
+  color: #999999;
+  border: 1px solid #999999;
+  padding: 10px 15px;
+  border-radius: 50px;
+  font-weight: lighter;
+  opacity: 0.6;
+}
+.btn-medium:hover {
+  opacity: 1;
+  text-decoration: none;
+  color: #999999;
+}
+
+.host {
+  margin: 0px 17px;
 }
