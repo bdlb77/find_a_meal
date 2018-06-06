@@ -1,7 +1,11 @@
 class EventsController < ApplicationController
  before_action :find_event, only: [:show, :edit, :destroy]
  skip_before_action :authenticate_user!, only: [:index, :show]
+  def home
+        @events1 = Event.all
+        @events = @events1.first(3)
 
+  end
   def index
     # @events = Event.all
     @events = Event.where.not(latitude: nil, longitude: nil)
