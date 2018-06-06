@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
   before_action :set_event, only: [:new, :create, :show]
-  before_action :set_user, only: [:index]
+  # before_action :set_user, only: [:index]
   def index
     @bookings = Booking.all
 	end
@@ -40,7 +40,7 @@ class BookingsController < ApplicationController
 	def destroy
     @booking = Booking.find(params[:id])
 	  @booking.destroy
-    redirect_to events_bookings_path(@booking.event)
+    redirect_to user_bookings_path(current_user)
   end
 
 	private
