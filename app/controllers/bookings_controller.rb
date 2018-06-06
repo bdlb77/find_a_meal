@@ -46,6 +46,8 @@ class BookingsController < ApplicationController
 	def destroy
     @booking = Booking.find(params[:id])
 	  @booking.destroy
+    flash[:alert] = "Your Reservation to #{@booking.event.name } 
+      for #{@booking.number_of_people} people has been cancelled!"
     redirect_to user_bookings_path(current_user)
   end
 
@@ -76,16 +78,4 @@ class BookingsController < ApplicationController
    
   end
 
-
-  # def already_booked
-  #   @bookings = Booking.all
-  #   @booking.event = @event
-
-
-  #   @bookings.each do |booking|
-  #     if booking.event.present?
-  #       flash[:notice] = "Are you sure you want to book?"
-  #     end
-  #   end
-  #   e
 end

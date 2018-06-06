@@ -4,10 +4,9 @@
       <h2><%= @event.name %></h2>
     </div>
     <div id="booking-time">
-      <h3><%= @event.time %></h3>
-    </div>
-    <div id="booking-date">
-      <h3><%= @event.date %></h3>
+      <h2>
+        <%= @event.date.strftime "%B %e" %> at <%= @event.time.strftime "%H:%M" %> 
+      </h2>
     </div>
     <div id="booking-des">
       <h4>Description:</h4>
