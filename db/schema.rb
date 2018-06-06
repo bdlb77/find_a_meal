@@ -39,7 +39,6 @@ ActiveRecord::Schema.define(version: 2018_06_06_064552) do
     t.float "longitude"
     t.string "address"
     t.integer "price"
-
   end
 
   create_table "users", force: :cascade do |t|

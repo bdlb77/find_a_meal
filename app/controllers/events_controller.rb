@@ -5,6 +5,7 @@ class EventsController < ApplicationController
     @events1 = Event.all
     @events1 = policy_scope(Event).order(created_at: :desc)
     @events = @events1.first(3)
+    raise
   end
 
   def index
