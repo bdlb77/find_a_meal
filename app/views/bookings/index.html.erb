@@ -3,20 +3,29 @@
     <h1 class="text-center">Hello! Here Are Your Reservations. </h1>
     <% @bookings.each do |booking| %>
       <%= link_to event_booking_path(booking.event, booking), class: 'active' do %>
-        <div class="col-xs-12 col-sm-6 col-md-4">
-          <div class="card">
-          <div class="card-photo" 
-            style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= booking.event.photo %>, crop: :fill %>')">
-          </div>
-            <div class="card-description">
-              <h2><%= booking.event.name %></h2>
-              <p>Seats Reserved: <%= booking.number_of_people%> </p>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="card" >
+          <% if booking['photo'].blank?  %>
+            <div class="card-photo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(https://source.unsplash.com/collection/1322972/1600x900);">
+              <h2 class= "card-name text-center"><%= booking.event.name.capitalize %></h2>
             </div>
-            <div class="card-date"><%= booking.event.date %></div>
+          <% else %>
+            <div class="card-photo" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%=image_path booking.event.photo, crop: :fill %>);">
+              <h2 class= "card-name text-center"><%= booking.name.capitalize %></h2>
+            </div>
+          <% end %>
+            <div class="card-description">
+              <p><%= booking.event.description.first(60) + "..." %></p>
+            </div>
+            <div>
+              <h3 class= "text-center card-price">Price: <%= booking.event.price %>$</h3>
+            </div>
+            <div class="card-date text-center"><%= booking.event.date.strftime "%B %e" %></div>
           </div>
         </div>
       <% end %>
     <% end %>
   </div>
 </div>
+
 
