@@ -46,6 +46,7 @@ class BookingsController < ApplicationController
 	def show
     @booking = Booking.find(params[:id])
     authorize @booking
+     
      @markers = 
       [{
         lat: @booking.event.latitude,
@@ -87,7 +88,7 @@ class BookingsController < ApplicationController
     seats_counter += @booking.number_of_people
     @seats_available = max_p - seats_counter
     @seats_counter = seats_counter
-    max_p > seats_counter
+    max_p >= seats_counter
 
   end
 
