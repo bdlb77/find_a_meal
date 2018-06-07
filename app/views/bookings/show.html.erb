@@ -15,6 +15,9 @@
       <h4>Description:</h4>
       <%= @event.description %>
     </div>
+    <div id="booking-address">
+      <h4><%= @event.address %></h4>
+    </div>
     <div id="buttons-event">
       <%= link_to "Cancel Reservation", booking_path,
         class: "btn-sm btn btn-warning ", method: :delete %>
@@ -22,7 +25,7 @@
 
   </div>
   <div class="right-container">
-   <% if @event['photo'].blank?  %>
+   <% if @booking['photo'].blank?  %>
       <div class="bookings-picture pic-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(https://source.unsplash.com/collection/1322972/1080x800);">
       </div>
     <% else %>
