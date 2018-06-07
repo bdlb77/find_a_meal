@@ -12,12 +12,12 @@
     <%# end %>
 
     <div class="date-form">
-      <%= "Choose a date:"%>
+     <!--  <div class= "date-title"><%#= "Choose event by date:"%></div> -->
       <form method="get" action="/events">
         <input id="authenticity_token" name="authenticity_token" type="hidden" value="#{form_authenticity_token}" />
         <div class="form-group ">
-          <label class="control-label " for="date">
-            Date
+          <label class="control-label date-title " for="date">
+            Choose a date:
           </label>
           <div class="input-group">
             <div class="input-group-addon">
