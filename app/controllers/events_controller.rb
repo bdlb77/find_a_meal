@@ -10,7 +10,9 @@ class EventsController < ApplicationController
 
   def index
     if params[:date].present?
-      @events = Event.where(date: params[:date])
+      @events = policy_scope(Event).order(created_at: :desc)
+      @events =  @events.where(date: params[:date])
+      #@events = policy_scope(Event).order(created_at: :desc)
       events_marker = @events.where.not(latitude: nil, longitude: nil)
       @markers = events_marker.map do |event|
         {
@@ -19,7 +21,7 @@ class EventsController < ApplicationController
         }
       end
     else
-      @events = Event.all
+      #@events = Event.all
       @events = policy_scope(Event).order(created_at: :desc)
       events_marker = @events.where.not(latitude: nil, longitude: nil)
       @markers = events_marker.map do |event|
