@@ -1,6 +1,6 @@
 <div class="wrapper">
   <div class="container">
-    <h1 class="text-center">Hello! Here Are Your Reservations. </h1>
+    <h1 class="text-center" style="color: white">Hello! Here Are Your Reservations. </h1>
     <% @bookings.each do |booking| %>
       <%= link_to event_booking_path(booking.event, booking), class: 'active' do %>
       <div class="col-xs-12 col-sm-6 col-md-4">
