@@ -1,6 +1,7 @@
 class BookingsController < ApplicationController
   before_action :set_event, only: [:new, :create, :show, :update]
    before_action :set_user
+   @seats_available = 0
   def index
     @bookings = Booking.all
     @bookings = policy_scope(Booking).order(created_at: :desc)
@@ -84,6 +85,8 @@ class BookingsController < ApplicationController
       seats_counter += booking.number_of_people
     end
     seats_counter += @booking.number_of_people
+    @seats_available = max_p - seats_counter
+    @seats_counter = seats_counter
     max_p > seats_counter
 
   end

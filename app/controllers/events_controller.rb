@@ -1,6 +1,8 @@
 class EventsController < ApplicationController
   before_action :find_event, only: [:show, :edit, :destroy]
   skip_before_action :authenticate_user!, only: [:index, :show, :home]
+  @seats_available = 0
+  @seats_counter = 0
   def home
     @events1 = Event.all
     @events1 = policy_scope(Event).order(created_at: :desc)
@@ -42,7 +44,11 @@ class EventsController < ApplicationController
         lng: @event.longitude,
       }]
     authorize @event
+
+    check_availability
+
     # @user = User.find(current_user.id)
+
   end
 
 
@@ -89,4 +95,25 @@ class EventsController < ApplicationController
     params.require(:event).permit(:name, :address, :date, :time, :min_p, :max_p, :description, :photo, :price, :latitude, :longitude)
   end
 
+  def check_availability
+    seats_counter = 0
+    @booking = Booking.all
+    @event = Event.find(params[:id])
+    @booking.each do |booking|
+      if booking.event_id == @event.id
+        booking.event = @event
+        max_p = booking.event.max_p
+        seats_counter += booking.number_of_people
+        # @event.bookings.each do |book|
+        #seats_counter += @booking.number_of_people
+        # end
+        @seats_available = max_p - seats_counter
+        @seats_counter = seats_counter
+        max_p > seats_counter
+       end
+    end
+
+
+
+  end
 end
