@@ -8,13 +8,16 @@
         <%= @event.date.strftime "%B %e" %> at <%= @event.time.strftime "%H:%M" %> 
       </h2>
     </div>
+    <div id="booking-price">
+      <h3>$<%=@event.price %></h3>
+    </div>
     <div id="booking-des">
       <h4>Description:</h4>
       <%= @event.description %>
     </div>
     <div id="buttons-event">
       <%= link_to "Cancel Reservation", booking_path,
-        class: " btn-sm btn btn-warning ", method: :delete %>
+        class: "btn-sm btn btn-warning ", method: :delete %>
     </div>
 
   </div>
