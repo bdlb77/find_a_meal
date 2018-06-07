@@ -13,7 +13,6 @@ class EventsController < ApplicationController
     if params[:date].present?
       @events = policy_scope(Event).order(created_at: :desc)
       #@events = Event.all
-      raise #check how many objct
       @events =  @events.where(date: params[:date])
       # @events = @events.where(available: true)
       #@events = policy_scope(Event).order(created_at: :desc)
@@ -29,7 +28,7 @@ class EventsController < ApplicationController
       @events = policy_scope(Event).order(created_at: :desc)
       # @events = @events.where(available: true)
       events_marker = @events.where.not(latitude: nil, longitude: nil)
-      
+
       @markers = events_marker.map do |event|
         {
           lat: event.latitude,
@@ -41,7 +40,7 @@ class EventsController < ApplicationController
 
 
   def show
-    @markers = 
+    @markers =
       [{
         lat: @event.latitude,
         lng: @event.longitude,
@@ -115,6 +114,9 @@ class EventsController < ApplicationController
         max_p > seats_counter
        end
     end
+
+
+
 
 
 
