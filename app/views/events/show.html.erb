@@ -17,7 +17,7 @@
 </p>
     </div>
     <div class="show-price">
-    <p><strong>$ <%= @event.price %></strong></p>
+    <p><strong>Price: <%= @event.price %>$</strong></p>
     </div>
     <div id="buttons book-btn">
       <%= link_to "Book Your Spot!", new_event_booking_path(@event), class: "btn cancel-seat" %>
