@@ -13,7 +13,6 @@ class EventsController < ApplicationController
     if params[:date].present?
       @events = policy_scope(Event).order(created_at: :desc)
       #@events = Event.all
-      raise #check how many objct
       @events =  @events.where(date: params[:date])
       # @events = @events.where(available: true)
       #@events = policy_scope(Event).order(created_at: :desc)
