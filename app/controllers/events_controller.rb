@@ -5,7 +5,6 @@ class EventsController < ApplicationController
     @events1 = Event.all
     @events1 = policy_scope(Event).order(created_at: :desc)
     @events = @events1.first(3)
-    raise
   end
 
   def index
@@ -13,7 +12,6 @@ class EventsController < ApplicationController
     if params[:date].present?
       @events = Event.where(date: params[:date])
       @events = policy_scope(Event).order(created_at: :desc)
-=======
     # bookings = Booking.all
     # Event.all.each do |event|
     #   event.available = true
@@ -27,7 +25,7 @@ class EventsController < ApplicationController
     #     raise
     #     event.available = false
     #   end
-    # end
+    end
     if params[:date].present?
       # @events = Event.where(date: params[:date], available: :true)
        @events = Event.where(date: params[:date])
@@ -53,6 +51,11 @@ class EventsController < ApplicationController
   end
 
   def show
+    @marker =
+      {
+        lat: @event.latitude,
+        lng: @event.longitude,
+      }
     # @user = User.find(current_user.id)
     authorize @event
   end

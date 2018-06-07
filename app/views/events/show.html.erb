@@ -1,32 +1,25 @@
-  <div class="wrapper">
-    <div class="show-container">
-    <div class="grid">
-      <div class="info text-center">
-
-        <div class="text">
-          <div class="name-show">
-            <h1><%= @event.name %></h1>
-          </div>
-          <div class="description">
-            <h4> <%= @event.description %></h4>
-          </div>
-          <div id="buttons book-btn">
-            <%= link_to "Book Your Spot!", new_event_booking_path(@event), class: "btn cancel-seat" %>
-          </div>
-          <div class="location">
-            <p><strong>Location of the event:</strong> <%= @event.address %></p>
-          </div>
-          <div class="date">
-            <p><strong>Date: </strong> <%= @event.date %></p>
-          </div>
-          <div class="time">
-           <p><%= @event.time %></p>
-         </div>
-       </div>
-     </div>
-     <div id="map" class="show-map"></div>
-     <div class="pic-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%=image_path @event.photo, crop: :fill %>);">
-     </div>
+<div class="grid">
+  <div class="text">
+    <div class="name-show">
+      <h1><%= @event.name %></h1>
+    </div>
+    <div class="description">
+      <h4> <%= @event.description %></h4>
+    </div>
+    <div id="buttons book-btn">
+      <%= link_to "Book Your Spot!", new_event_booking_path(@event), class: "btn cancel-seat" %>
+    </div>
+    <div class="location">
+      <p><strong>Location of the event:</strong> <%= @event.address %></p>
+    </div>
+    <div class="date">
+      <p><strong>Date: </strong> <%= @event.date %></p>
+    </div>
+    <div class="time">
+     <p><%= @event.time %></p>
    </div>
- </div>
+  </div>
+  <div id="map" class="show-map" data-markers="<%= @marker.to_json %>"></div>
+  <div class="pic-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%=image_path @event.photo, crop: :fill %>);">
+</div>
 
