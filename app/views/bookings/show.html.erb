@@ -15,6 +15,9 @@
       <h4>Description:</h4>
       <%= @event.description %>
     </div>
+    <div id="booking-address">
+      <h4><%= @event.address %></h4>
+    </div>
     <div id="buttons-event">
       <%= link_to "Cancel Reservation", booking_path,
         class: "btn-sm btn btn-warning ", method: :delete %>
