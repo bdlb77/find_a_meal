@@ -19,8 +19,8 @@
 // }
 .card-date {
   position: absolute;
-  bottom: 8px;
-  left: 40%;
+  bottom: 10px;
+  left: 35%;
   font-size: 15px;
   text-transform: uppercase;
 }
@@ -86,6 +86,13 @@
   background-color: #eee;
   padding: 5px;
   border: none;
+}
+
+.card-price {
+  font-size: 15px;
+  position: absolute;
+  bottom: 25px;
+  left: 10%;
 }
 
 
