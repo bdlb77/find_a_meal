@@ -20,7 +20,7 @@
         <div>
          <h3 class= "text-center card-price">Price: <%= event.price %>$</h3>
        </div>
-        <div class="card-date text-center"><%= event.date %></div>
+        <div class="card-date text-center"><%= event.date.strftime "%B %e" %></div>
       </div>
     </div>
   <% end %>

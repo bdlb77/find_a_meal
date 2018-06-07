@@ -27,10 +27,10 @@
   </div>
    <div class="show-map" id="map" data-markers="<%= @markers.to_json %>"></div>
   <% if @event['photo'].blank?  %>
-    <div class="pic-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(https://source.unsplash.com/collection/1322972/1080x800);">
+    <div class="pic-card card-radiant" style="background-image: linear-gradient(rgba(77,77,77,77.9), rgba(0,0,0,0.0)), url(https://source.unsplash.com/collection/1322972/1080x800);">
     </div>
   <% else %>
-    <div class="pic-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%=image_path @event.photo, crop: :fill %>);">
+    <div class="pic-card" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url(<%=image_path @event.photo, crop: :fill %>);">
     </div>
   <% end %>
 
