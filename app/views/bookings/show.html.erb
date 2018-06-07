@@ -5,11 +5,11 @@
     </div>
     <div id="booking-time">
       <h2>
-        <%= @event.date.strftime "%B %e" %> at <%= @event.time.strftime "%H:%M" %> 
+        <%= @event.date.strftime "%B %e" %> at <%= @event.time.strftime "%H:%M" %>
       </h2>
     </div>
     <div id="booking-price">
-      <h3>$<%=@event.price %></h3>
+      <h3>Price: <%=@event.price %>$</h3>
     </div>
     <div id="booking-des">
       <h4>Description:</h4>
