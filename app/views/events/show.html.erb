@@ -8,8 +8,12 @@
     </div>
   <!-- Change the code of the booking below! -->
     <div class="booking">
-      <p>Serving <%= @seats_counter %> seats</p>
+      <%if @seats_counter.blank? %>
+      <p><%= @event.max_p %> seats are available <i class="far fa-smile" style="color: green;"></i>
+      <%else%>
+      <p><%=@seats_counter %> guests are going!</p>
       <p><%= @seats_available %> seats are available <i class="far fa-smile" style="color: green;"></i>
+      <%end%>
 </p>
     </div>
     <div class="show-price">
