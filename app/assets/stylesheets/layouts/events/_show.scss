@@ -21,8 +21,6 @@
 
 // }
 
-
-
 .cancel-seat{
 
   background-color: #315972;
@@ -54,7 +52,10 @@
   border: 1px  solid gray;
   text-align: center;
   box-shadow: rgba(0,0,0,0.2) 3px 3px 3px;
+  background: #FDFDFC;
+
 }
+
 
 .grid .show-map {
   grid-row: 2/ span 1 !important;
@@ -91,3 +92,6 @@
    margin: 28px -235px -131px 213px;
 }
 
+.description {
+  color: #ccc;
+}
