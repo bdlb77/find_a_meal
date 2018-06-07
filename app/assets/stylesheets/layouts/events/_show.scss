@@ -21,8 +21,6 @@
 
 // }
 
-
-
 .cancel-seat{
 
   background-color: #315972;
@@ -49,18 +47,22 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  margin: 20px;
+  margin-right: 10px;
   padding: 30px;
   border: 1px  solid gray;
   text-align: center;
+  box-shadow: rgba(0,0,0,0.2) 3px 3px 3px;
+  background: #FDFDFC;
+
 }
 
+
 .grid .show-map {
-   grid-row: 2/ span 1 !important;
-   grid-column: 2/ span 1 !important;
-   margin: 0;
-   border-radius: 5px;
-   box-shadow: rgba(0,0,0,0.2) 10px 10px 10px;
+  grid-row: 2/ span 1 !important;
+  grid-column: 2/ span 1 !important;
+  margin: 0;
+  border-radius: 5px;
+  box-shadow: rgba(0,0,0,0.2) 3px 3px 3px;
   border: 1px solid black;
   height: 100% !important;
 }
@@ -70,20 +72,18 @@
   grid-column: 2/ span 1;
   margin: 0 0 10px 0;
   border-radius: 5px;
+  box-shadow: rgba(0,0,0,0.2) 3px 3px 3px;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 
 
 @media(max-width: 720px) {
   .grid {
-  display: flex !important;
-  flex-direction: column;
-  flex-wrap: row wrap;
+  display: inline-block;
   }
 
-  .show-map{
-    z-index: 0 !important;
-  }
 }
 
 .avatarshow {
@@ -94,3 +94,6 @@
    margin: 28px -235px -131px 213px;
 }
 
+.description {
+  color: #ccc;
+}

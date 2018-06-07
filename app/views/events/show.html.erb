@@ -6,20 +6,26 @@
     <div class="description">
       <h4> <%= @event.description %></h4>
     </div>
+  <!-- Change the code of the booking below! -->
+    <div class="booking">
+      <p>Serving <%= @seats_counter %> seats</p>
+      <p><%= @seats_available %> seats are available <i class="far fa-smile" style="color: green;"></i>
+</p>
+    </div>
+    <div class="show-price">
+    <p><strong>$ <%= @event.price %></strong></p>
+    </div>
     <div id="buttons book-btn">
       <%= link_to "Book Your Spot!", new_event_booking_path(@event), class: "btn cancel-seat" %>
     </div>
     <div class="location">
-      <p><strong>Location of the event:</strong> <%= @event.address %></p>
+      <p><strong>Address:</strong> <%= @event.address %></p>
     </div>
     <div class="date">
-      <p><strong>Date: </strong> <%= @event.date %></p>
+      <p><strong><%= @event.date.strftime "%B %e" %> at <%= @event.time.strftime "%H:%M" %></strong></p>
     </div>
-    <div class="time">
-     <p><%= @event.time %></p>
-   </div>
   </div>
-  <div id="map" class="show-map" data-markers="<%= @marker.to_json %>"></div>
+   <div class="show-map" id="map" data-markers="<%= @markers.to_json %>"></div>
   <% if @event['photo'].blank?  %>
     <div class="pic-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(https://source.unsplash.com/collection/1322972/1080x800);">
     </div>
@@ -27,4 +33,5 @@
     <div class="pic-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%=image_path @event.photo, crop: :fill %>);">
     </div>
   <% end %>
+
 
