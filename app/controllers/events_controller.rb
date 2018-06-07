@@ -11,6 +11,7 @@ class EventsController < ApplicationController
   def index
     if params[:date].present?
       @events = policy_scope(Event).order(created_at: :desc)
+      #@events = Event.all
       @events =  @events.where(date: params[:date])
       #@events = policy_scope(Event).order(created_at: :desc)
       events_marker = @events.where.not(latitude: nil, longitude: nil)
