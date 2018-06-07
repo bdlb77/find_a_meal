@@ -26,6 +26,7 @@ class EventsController < ApplicationController
       #@events = Event.all
       @events = policy_scope(Event).order(created_at: :desc)
       events_marker = @events.where.not(latitude: nil, longitude: nil)
+      
       @markers = events_marker.map do |event|
         {
           lat: event.latitude,
@@ -37,14 +38,17 @@ class EventsController < ApplicationController
 
 
   def show
-    @marker =
-      {
+    @markers = 
+      [{
         lat: @event.latitude,
         lng: @event.longitude,
-      }
-    # @user = User.find(current_user.id)
+      }]
     authorize @event
+
     check_availability
+
+    # @user = User.find(current_user.id)
+
   end
 
 
@@ -88,7 +92,7 @@ class EventsController < ApplicationController
   end
 
   def event_params
-    params.require(:event).permit(:name, :address, :date, :time, :min_p, :max_p, :description, :photo)
+    params.require(:event).permit(:name, :address, :date, :time, :min_p, :max_p, :description, :photo, :price, :latitude, :longitude)
   end
 
   def check_availability

@@ -10,7 +10,6 @@
     <div class="booking">
       <p>Serving <%= @seats_counter %> seats</p>
       <p><%= @seats_available %> seats are available <i class="far fa-smile" style="color: green;"></i>
-
 </p>
     </div>
     <div class="show-price">
@@ -25,9 +24,9 @@
     <div class="date">
       <p><strong><%= @event.date.strftime "%B %e" %> at <%= @event.time.strftime "%H:%M" %></strong></p>
     </div>
-
   </div>
-  <div id="map" class="show-map" data-markers="<%= @marker.to_json %>"></div>
+  <div class="show-map" id="map" data-markers="<%= @markers.to_json %>"></div>
+  
   <div class="pic-card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(<%=image_path @event.photo, crop: :fill %>);">
 </div>
 
