@@ -11,7 +11,9 @@ class EventsController < ApplicationController
     if params[:date].present?
       @events = policy_scope(Event).order(created_at: :desc)
       #@events = Event.all
+      raise #check how many objct
       @events =  @events.where(date: params[:date])
+      # @events = @events.where(available: true)
       #@events = policy_scope(Event).order(created_at: :desc)
       events_marker = @events.where.not(latitude: nil, longitude: nil)
       @markers = events_marker.map do |event|
@@ -23,6 +25,7 @@ class EventsController < ApplicationController
     else
       #@events = Event.all
       @events = policy_scope(Event).order(created_at: :desc)
+      # @events = @events.where(available: true)
       events_marker = @events.where.not(latitude: nil, longitude: nil)
       @markers = events_marker.map do |event|
         {
