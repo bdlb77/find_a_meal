@@ -12,15 +12,15 @@ Event.destroy_all
 Booking.destroy_all
 puts "events destroyed!"
 puts "seeding.."
-20.times do
+25.times do
   event = Event.new(
     address: Faker::Address.full_address,
     date: Faker::Date.forward(23),
     time: Faker::Time.forward(23, :morning),
-    min_p: Faker::Number.between(1, 3),
+    min_p: Faker::Number.between(2, 5),
     max_p: Faker::Number.between(6, 14),
-    description: Faker::GameOfThrones.quote,
-    name: Faker::GameOfThrones.character,
+    description: Faker::Friends.quote, 
+    name: Faker::Internet.user_name,
     photo: "https://source.unsplash.com/collection/1322972/", #=> "http://placehold.it/300x300.png/000"
     price: Faker::Number.decimal(2)
   )
